@@ -1,0 +1,7 @@
+{
+    "defaultCommandTimeout": 20000,
+    "tasks":["Test Planning and Control","Test Analysis and Design","Test Implementation and Execution","Evaluating Exit Criteria and Reporting","Test Closure"],
+    "completed_task":["Test Planning and Control","Test Analysis and Design"],
+    "pending_task":["Test Implementation and Execution","Evaluating Exit Criteria and Reporting","Test Closure"]
+    
+}

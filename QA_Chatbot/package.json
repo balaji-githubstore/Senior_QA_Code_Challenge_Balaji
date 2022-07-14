@@ -1,0 +1,18 @@
+{
+  "_comment 1":"Task 1:(file:chatbot.test.js) I have created multiple test cases with different responses to validate the Happy chat API request",
+  "_comment 2":"Task 2:(file:chatbot2.flow.test.js) I have complete Happy API automation based on the flow diagram by creating logics on every test case.",
+  "_comment 3":"Task 1: (file:Feature/HappyChat.feature)I have created multiple test cases with different responses to validate the Happy API request",
+  "name":"qa-chatbot",
+  "version":"1.0.0",
+  "description":"QA Challenge for Rival Technologies",
+  "main":"index.js",
+  "author":"Rival Tech",
+  "private":true,
+  "scripts":{
+     "test":"jest"
+  },
+  "devDependencies":{
+     "jest":"^26.6.3",
+     "supertest":"^6.2.4"
+  }
+}
