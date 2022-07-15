@@ -17,6 +17,36 @@ Feature: Challenge Register
     Then I should get the response as 200
     And I should get the 'user_id' in json body
 
+  @valid @positive
+  Scenario: Valid Inititalize Of conversation
+    And I have resource as '/challenge-conversation'
+    And I have request header as 'content-type: application/json'
+    And I have user_id as 'bala'
+    When I send the Post request
+    Then I should get the response as 200
+    And I should get the 'conversation_id' in json body
+
+  @valid @positive
+  Scenario: Retrieve new messages
+    And I have resource as '/challenge-behaviour/{conversion_id}'
+    And I have request header as 'content-type: application/json'
+    When I send the GET request
+    Then I should get the response as 200
+    And I should get the 'messages' in json body
+    And If 'messages' contains 'Thank you' then Celebrate
+
+  @valid @positive
+  Scenario: Reply to the chatbot
+    And I have resource as '/challenge-behaviour/{conversion_id}'
+    And I have request header as 'content-type: application/json'
+    When I send the Post request
+    And I store the reponse status and content
+    And If content is false then terminate otherwise invoke scenario 'Retrieve new messages' 
+    Then I should get the stored response as 200
+    And I should get the stored 'content' in json body
+
+  
+
   #existing users
   @invalid @negative
   Scenario Outline: Multiple Account Creation
@@ -43,15 +73,6 @@ Feature: Challenge Register
     When I send the Post request
     Then I should get the response as 400 for invalid users
 
-  @valid @positive
-  Scenario: Valid Inititalize Of conversation
-    And I have resource as '/challenge-conversation'
-    And I have request header as 'content-type: application/json'
-    And I have user_id as 'bala'
-    When I send the Post request
-    Then I should get the response as 200
-    And I should get the 'conversation_id' in json body
-
   @invalid @negative
   Scenario: Invalid Inititalize Of conversation
     And I have resource as '/challenge-conversation'
@@ -60,30 +81,12 @@ Feature: Challenge Register
     When I send the Post request
     Then I should get the response as 400 for invalid users
 
-  @valid @positive
-  Scenario: Retrieve new messages
-    And I have resource as '/challenge-behaviour/{conversion_id}'
-    And I have request header as 'content-type: application/json'
-    When I send the GET request
-    Then I should get the response as 200
-    And I should get the 'messages' in json body
-
   @invalid @negative
   Scenario: Invalid Conversation Id for Retrieve new messages
     And I have resource as '/challenge-behaviour/{conversion_id}'
     And I have request header as 'content-type: application/json'
     When I send the GET request
     Then I should get the response as 400
-
-  @valid @positive
-  Scenario: Reply to the chatbot
-    And I have resource as '/challenge-behaviour/{conversion_id}'
-    And I have request header as 'content-type: application/json'
-    When I send the Post request
-    And I store the reponse status and content
-    And If content is false then terminate otherwise invoke scenario 'Retrieve new messages' 
-    Then I should get the stored response as 200
-    And I should get the stored 'content' in json body
     
    @invalid @negative
   Scenario: Invalid Conversation Id to Reply to the chatbot
