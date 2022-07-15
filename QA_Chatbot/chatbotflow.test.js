@@ -15,7 +15,7 @@ const bot_response=true
 
 describe('Test the application flow as mentioned in the flow chart', () => {
   it('It should return 200 with user_id for the POST method for challenge register when no user_id available', async () => {
-
+    //run when no user_id avaiable
     if(user_id == "")
     {
       const response = await request
@@ -37,6 +37,7 @@ describe('Test the application flow as mentioned in the flow chart', () => {
   })
 
   it('It should return 200 with conversation_id for the POST method for challenge conversation no customer_id available', async () => {
+    //run when no conversation_id avaiable
     if(conversation_id == "")
     {
       const response = await request
@@ -57,31 +58,40 @@ describe('Test the application flow as mentioned in the flow chart', () => {
   })
 
   it.only('It should return 200 with message for the Get method for challenge behaviour using conversion id', async () => {
-
-    const response = await request
-    .get('/challenge-behaviour/'+conversation_id)
-
-    expect(response.statusCode).toEqual(200)
-    expect(response.body.messages).toBeDefined();
-
-    //log bot first message
-    message=String(response.body.messages[messages.length-1])
-
-    //won't run next post request under while condition - if message contains "Thank you"
-    if (message.toLowerCase().includes("thank you")) {
-      your_answer = "";
-      console.log("Celebrate - We will contact you")
-      bot_response=false
-    } else if(message.toLowerCase().includes("yes/no")){
-      your_answer = "yes";
-    }
-    else if(message.toLowerCase().includes("list")){
-      your_answer="banana,orange,pineapple"
-    }
-
-    //run when no thank you received
+    //run when no thank you received and on first time
     while(bot_response.toEqual(true))
     {
+      
+       //run when no message is empty
+      if(message == "")
+      {
+         //run  when message is empty
+        const response = await request
+        .get('/challenge-behaviour/'+conversation_id)
+    
+        expect(response.statusCode).toEqual(200)
+        expect(response.body.messages).toBeDefined();
+    
+        //log bot first message
+        message=String(response.body.messages[messages.length-1])
+    
+        //won't run next post request under while condition - if message contains "Thank you"
+        
+        if (message.toLowerCase().includes("thank you")) {
+          //stop further iteration when thank you
+          your_answer = "";
+          console.log("Celebrate - We will contact you")
+          break
+        } else if(message.toLowerCase().includes("yes") || message.toLowerCase().includes("no")){
+          your_answer = "yes";
+        }
+        else if(message.toLowerCase().includes("list")){
+          your_answer="banana,orange,pineapple"
+        }
+      }
+      //making empty for next iteration
+      message == ""
+
       const response2 = await request
       .post('/challenge-behaviour/'+conversation_id)
       .send({
@@ -96,17 +106,9 @@ describe('Test the application flow as mentioned in the flow chart', () => {
        //bot response loaded
        //either true or false
        bot_response=String(response2.body.correct)
-      //while loop continues if bot_response is true
+      //while loop continues if bot_response is true otherwise terminate
+     
     }
-    
-  
+  })
   })
 
-  })
-
-  it('It should return 200 with correct for the POST method for challenge behaviour using conversion id', async () => {
-    
-   
-
- 
-});

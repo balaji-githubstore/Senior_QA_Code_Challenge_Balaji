@@ -6,8 +6,6 @@ const host = "https://us-central1-rival-chatbot-challenge.cloudfunctions.net";
 const request = supertest(host);
 
 
-
-
 describe('Test all API request are functioning properly', () => {
   const user_id=""
   const conversation_id=""
@@ -74,10 +72,6 @@ describe('Test all API request are functioning properly', () => {
 
   })
 
-  //invalid details
-  conversation_id=""
-  user_id=""
-
   it('It should return 409  for the POST method for challenge register for existing name and email', async () => {
     const response = await request
     .post('/challenge-register')
@@ -91,7 +85,7 @@ describe('Test all API request are functioning properly', () => {
     expect(response.statusCode).toEqual(409)
   })
 
-  it('It should return 409 with conversation_id for the POST method for challenge conversation for existing conversion id', async () => {
+  it('It should return 409 with conversation_id for the POST method for challenge conversation for the user with existing conversion id', async () => {
     const response = await request
     .post('/challenge-register')
     .send({
@@ -103,6 +97,10 @@ describe('Test all API request are functioning properly', () => {
     expect(response.statusCode).toEqual(409)
 
   })
+
+    //invalid details
+    conversation_id="&4rr"
+    user_id="&4rr"
 
   it('It should return 400 for the POST method for challenge conversation for invalid user id', async () => {
     const response = await request
