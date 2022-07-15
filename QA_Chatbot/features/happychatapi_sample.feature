@@ -1,3 +1,4 @@
+@ignore
 Feature: Challenge Register
   In order to converse with bot
   As a user 

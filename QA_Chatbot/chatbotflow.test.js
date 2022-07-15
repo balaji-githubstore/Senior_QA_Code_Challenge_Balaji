@@ -2,16 +2,15 @@
 //please check chatbot.test for API request testing.
 const supertest = require("supertest");
 
-// const host = "https://us-central1-rival-chatbot-challenge.cloudfunctions.net";
-const host = "https://petstore.swagger.io/v2"
+const host = "https://us-central1-rival-chatbot-challenge.cloudfunctions.net";
 const request = supertest(host);
 
 //will be updated with the below request
-const user_id=""
-const conversation_id=""
-const message=""
-const your_answer=""
-const bot_response=true
+let user_id=""
+let conversation_id=""
+let message=""
+let your_answer=""
+let bot_response=true
 
 describe('Test the application flow as mentioned in the flow chart', () => {
   it('It should return 200 with user_id for the POST method for challenge register when no user_id available', async () => {
@@ -73,7 +72,7 @@ describe('Test the application flow as mentioned in the flow chart', () => {
         expect(response.body.messages).toBeDefined();
     
         //log bot first message
-        message=String(response.body.messages[messages.length-1])
+        message=String(response.body.messages[response.body.messages.length-1])
     
         //won't run next post request under while condition - if message contains "Thank you"
         

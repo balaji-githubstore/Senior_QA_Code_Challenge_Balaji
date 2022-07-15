@@ -1,8 +1,10 @@
 {
-  "_comment 1":"Task 1:(file:chatbot.test.js) I have created multiple test cases with different responses to validate the Happy chat API request",
-  "_comment 2":"Task 2:(file:chatbot2.flow.test.js) I have complete Happy API automation based on the flow diagram by creating logics on every test case.",
- "_comment 3":"Task 1: (file:Feature/HappyChat.feature)I have created scenario to validate the Happy API request",
-  "_comment 4":"Task 1: (file:Feature/HappyChat_sample.feature)I have created multiple test cases with different responses to validate the Happy API request",
+  "_comment 1":"Challenge part 1:(file:chatbot.test.js) Test cases for API requests",
+  "_comment 1.1":"To run Challenge part 1 ==> npm test chatbot.test.js",
+  "_comment 2":"Challenge part 2: (file:feature/happychat.feature) Scenario for HappyChat",
+  "_comment 2.1":"To run Challenge part 2 ==> npx cucumber-js --tags '@happychat'",
+  "_comment 3":"additional work - (file:chatbot2.flow.test.js) I have complete Happy API automation based on the flow diagram by creating logics on every test case.",
+  "_comment 4":"additional work - (file:Feature/HappyChat_sample.feature)I have created multiple Scenario with different responses to validate the Happy API request",
   "name":"qa-chatbot",
   "version":"1.0.0",
   "description":"QA Challenge for Rival Technologies",
@@ -14,6 +16,7 @@
   },
   "devDependencies":{
      "jest":"^26.6.3",
-     "supertest":"^6.2.4"
+     "supertest":"^6.2.4",
+     "@cucumber/cucumber":"8.4.0"
   }
 }
