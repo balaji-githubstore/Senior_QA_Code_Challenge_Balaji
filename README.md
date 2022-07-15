@@ -1,9 +1,11 @@
 # Chatbot Challenge 🤖
 1. Write an automated test suite that checks the chatbot is functioning correctly.
-   Completed - 
+   ** Completed **
 
 2. Write one happy path test for the /challenge-register endpoint using the Cucumber BDD framework
-   Completed - HappyChat.feature
+   ** Completed - happychat.feature **
+
+ ** check package-json - Please check comment 1.1 & comment 2.1 to run 1 & 2 ** 
 
 # QA Engineer Challenge
 
