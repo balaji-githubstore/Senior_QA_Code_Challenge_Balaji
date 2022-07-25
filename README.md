@@ -1,3 +1,12 @@
+# QA Engineer Challenge
+Challenge 1:
+1. Unit testing completed for components - todo, app, todolist & reducers - todos,visibilityfilters
+
+Challenge 2:
+2. Write UI Tests using the Cypress framework that verify the correct functionality of the application.
+Completed - UI - ui.spec.js 
+
+
 # Chatbot Challenge 🤖
 1. Write an automated test suite that checks the chatbot is functioning correctly.
    **Completed**
@@ -7,12 +16,7 @@
 
  **Check package.json - Please check comment 1.1 & comment 2.1 to run 1 & 2** 
 
-# QA Engineer Challenge
 
-Challenge 2:
-2. Write UI Tests using the Cypress framework that verify the correct functionality of the application.
-Completed - UI - ui.spec.js 
+Added some additional sceanrio and api flow test apart from the given challenge to get the flow. 
 
-
-Challenge 1:
-1. working on it
+Folder - Task-additional scenario-api-flow-not in challenge
