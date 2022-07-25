@@ -12,7 +12,7 @@ Completed - UI - ui.spec.js
    **Completed**
 
 2. Write one happy path test for the /challenge-register endpoint using the Cucumber BDD framework
-   **Completed - happychat.feature**
+   **Completed - happychat.feature - Step Definition in support folder**
 
  **Check package.json - Please check comment 1.1 & comment 2.1 to run 1 & 2** 
 
